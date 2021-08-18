@@ -49,3 +49,8 @@
     top: 50%;
     transform: translateY(-50%); /**/
 }
+
+.header__nabar-icon-link {
+    color: var(--white-color);
+    text-decoration: none;
+}
