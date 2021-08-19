@@ -23,7 +23,8 @@
 
 }
 
-.header__navbar-item--hasqr:hover .header__qr {
+.header__navbar-item--hasqr:hover .header__qr,
+.header__navbar-item--hasqr:hover .header__notify{
     display: block;
 }
 
@@ -73,6 +74,7 @@
     font-size: 1.4rem;
     margin: 0 4px;
 }
+
 .header__navbar-title--no-pointer {
     cursor: text;
     color: var(--white-color);
@@ -129,11 +131,52 @@
 /* Header notification */
 .header__notify {
     position: absolute;
-    top: 118%;
+    top: 130%;
     width: 404px;
-    background-color: rgba(250, 250, 250, 0.842);
+    background-color: var(--white-color);
     right: 0;
+    border: 1px solid rgb(221, 209, 209);
+    cursor: default; /* */
+    display: none;
+    transform-origin: 90% top;
+    animation: headerNotifyGrowth ease-in 0.2s;
 }
+
+.header__notify::before {
+    content: "";
+    border-width: 20px 30px;
+    border-style: solid;
+    border-color: transparent transparent var(--white-color) transparent;
+    position: absolute;
+    right: 1px;
+    top: -30px;
+}
+
+.header__notify::after {
+    position: absolute;
+    width: 25%;
+    right: 0;
+    top: -18px;
+    height: 20px;
+    content: "";
+    display: block;
+}
+
+
+
+
+@keyframes headerNotifyGrowth {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
 
 .header__notify-header {
     height: 40px;
@@ -142,10 +185,12 @@
 
 .header__notify-header h3 {
     color: #999;
+    width: 100%;
     margin: 0 0 0 12px;
     font-weight: 400;
     font-size: 1rem;
     line-height: 40px;
+    user-select: none; /* */
 }
 
 .header__notify-list {
@@ -156,7 +201,7 @@
 }
 
 .header__notify-item:hover {
-    background-color: rgba(128, 79, 69, 0.08);
+    background-color: rgba(148, 138, 136, 0.08);
 }
 
 .header__notify-item--viewed {
@@ -184,6 +229,7 @@
     display: block;
     font-size: 1rem;
     color: var(--black-color);
+    line-height: 1.6rem;
 }
 
 .header__notify-descriotion {
@@ -194,11 +240,19 @@
 }
 
 .header__notify-footer {
-    text-align: center;
+    display: flex;
+}
+
+.header__notify-footer:hover {
+    background: rgba(238, 77, 43, 0.08);
 }
 
 .header__notify-footer-btn {
     text-decoration: none;
     color: var(--text-color);
-    padding:0 48px;
+    padding:8px 48px;
+    margin: auto;
+    font-size: 1rem;
+    font-weight: 600;
 }
+
